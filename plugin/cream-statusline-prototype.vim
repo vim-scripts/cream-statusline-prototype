@@ -1,6 +1,7 @@
 "
 " Filename: cream-statusline-prototype.vim
-" Updated:  2004-09-29 23:41:36-0400
+" Updated:  2004-09-30 17:51:40-0400
+" Version:  1.01
 "
 " Cream -- An easy-to-use configuration of the famous Vim text editor.
 " <http://cream.sourceforge.net> (C) 2002-2004 Steve Hall
@@ -44,6 +45,13 @@
 " prototype in the statusline. The prototype is recalculated each time
 " it is toggled ON.
 "
+" ChangeLog:
+"
+" 2004-09-30
+" o Fixed restoration of existing statusline by escaping pipe/bar and
+"   space chars.
+" o Silenced errors when searching for tags file and it doesn't exist.
+"
 
 function! Cream_statusline_prototype_toggle()
 " Toggle current prototype with the current statusline. Recalculate
@@ -54,7 +62,7 @@ function! Cream_statusline_prototype_toggle()
 
 	if !exists("g:save_statusline")
 		" save current statusline
-		let g:save_statusline = &statusline
+		let g:save_statusline = escape(&statusline, ' |')
 		" recalculate current prototype
 		let g:cream_prototype = Cream_prototype()
 		" set to prototype
@@ -133,7 +141,7 @@ function! Cream_prototype()
 	let mybufnr = bufnr("%")
 	let mypos = s:Pos()
 	" jump to function definition via tag
-	execute "silent tag " . mytag
+	execute "silent! tag " . mytag
 	" if we moved
 	if  myvcol != virtcol('.')
 	\|| myline != line('.')

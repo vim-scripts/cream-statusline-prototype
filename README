@@ -1,0 +1,14 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1094
+
+
+Toggles the display of the current function prototype on the statusline with key <F8>. This is a basic illustration of how to write code to accomplish this...feel free to embellish!
+
+
+USAGE
+
+By default, the <F8> key will toggle the display of the current prototype in the statusline. The prototype is recalculated each time it is toggled ON.
+
+
+This is one of many custom utilities and functions for gVim from the Cream project (http://cream.sourceforge.net), a configuration of Vim for those of us familiar with Apple and Windows software.
+
+
